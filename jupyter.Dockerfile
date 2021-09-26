@@ -7,6 +7,9 @@ RUN apt install -y python3 python3-pip
 
 RUN pip3 install pyspark==${spark_version} jupyterlab==${jupyter_version} wget
 
+RUN pip3 install boto3
+### Para acessar S3
+
 EXPOSE 8888
 
 WORKDIR /opt/workspace
