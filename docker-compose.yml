@@ -23,8 +23,8 @@ services:
   image: lucaspgduarte/trabalho_spark-worker
   container_name: trabalho-spark-worker-1
   environment:
-   - SPARK_WORKER_CORES=2
-   - SPARK_WORKER_MEMORY=4000m
+   - SPARK_WORKER_CORES=4
+   - SPARK_WORKER_MEMORY=8000m
   ports:
    - 8081:8081
   volumes:
@@ -35,40 +35,16 @@ services:
   image: lucaspgduarte/trabalho_spark-worker
   container_name: trabalho-spark-worker-2
   environment:
-   - SPARK_WORKER_CORES=2
-   - SPARK_WORKER_MEMORY=4000m
+   - SPARK_WORKER_CORES=4
+   - SPARK_WORKER_MEMORY=8000m
   ports:
    - 8082:8081
   volumes:
    - shared-workspace:/opt/workspace
   depends_on:
    - spark-master
- spark-worker-3:
-  image: lucaspgduarte/trabalho_spark-worker
-  container_name: trabalho-spark-worker-3
-  environment:
-   - SPARK_WORKER_CORES=2
-   - SPARK_WORKER_MEMORY=4000m
-  ports:
-   - 8083:8081
-  volumes:
-   - shared-workspace:/opt/workspace
-  depends_on:
-   - spark-master
- spark-worker-4:
-  image: lucaspgduarte/trabalho_spark-worker
-  container_name: trabalho-spark-worker-4
-  environment:
-   - SPARK_WORKER_CORES=2
-   - SPARK_WORKER_MEMORY=4000m
-  ports:
-   - 8084:8081
-  volumes:
-   - shared-workspace:/opt/workspace
-  depends_on:
-   - spark-master
  jupyter:
-  image: ezambomsantana/jupyter
+  image: lucaspgduarte/trabalho_jupyter
   container_name: trabalho-jupyter
   ports:
    - 8888:8888
